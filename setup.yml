@@ -42,6 +42,9 @@
     - role: lxc
       become: true
       when: proxmox_lxc_configure
+    - role: host_low_memory
+      become: true
+      when: host_low_memory_optimisations
     - role: k3s_storage
       become: true
       when: k3s_secondary_storage
