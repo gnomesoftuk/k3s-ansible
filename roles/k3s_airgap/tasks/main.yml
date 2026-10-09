@@ -102,3 +102,9 @@
             - "{{ local_playbook_dir }}/{{ k3s_extras_airgap_dir }}/*.tar.gz"
             - "{{ local_playbook_dir }}/{{ k3s_extras_airgap_dir }}/*.tar.zst"
             - "{{ local_playbook_dir }}/{{ k3s_extras_airgap_dir }}/*.tar"
+
+        # Ideally i would test that these images have been loaded into the k3s containerd image
+        # cache, but since this role is typically run before k3s starts, there is no way
+        # to achieve this.
+        # I could maybe achieve this with a handler but the playbook would probably
+        # fail before this if any of the deployments that required the images failed

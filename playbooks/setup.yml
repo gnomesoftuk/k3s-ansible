@@ -62,6 +62,13 @@
       become: true
       when: custom_registries
 
+- name: Setup k3s cluster (pre)
+  hosts: master
+  environment: "{{ proxy_env | default({}) }}"
+  roles:
+    - role: k3s_server_pre
+      become: true
+
 - name: Setup k3s servers
   hosts: master
   environment: "{{ proxy_env | default({}) }}"
@@ -76,7 +83,7 @@
     - role: k3s_agent
       become: true
 
-- name: Configure k3s cluster
+- name: Configure k3s cluster (post)
   hosts: master
   environment: "{{ proxy_env | default({}) }}"
   roles:
