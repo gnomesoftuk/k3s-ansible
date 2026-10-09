@@ -12,7 +12,7 @@
       community.general.filesystem:
         fstype: ext4
         dev: "{{ k3s_secondary_storage_disk }}"
-        force: no
+        force: false
         opts: "-L {{ k3s_secondary_storage_label }}"
         resizefs: "{{ k3s_secondary_storage_auto_resize }}"
 
@@ -35,8 +35,6 @@
 
     - name: Show filesystem info
       ansible.builtin.debug:
-        msg: > 
+        msg: >
           Found filesystem for K3s storage device:
           {{ k3s_secondary_storage_fs_info.stdout }}
-
-        

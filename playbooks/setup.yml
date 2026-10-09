@@ -50,6 +50,9 @@
       when: k3s_secondary_storage
     - role: prereq
       become: true
+    - role: k3s_airgap
+      become: true
+      when: k3s_airgap
     - role: download
       become: true
       when: not k3s_airgap
